@@ -5,17 +5,17 @@ class jdk{
   }
 }
 
-class neo4j {
-  require jdk
-
-  # GLOBAL PATH SETTING
-  Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
-
-  # configurable stuff here
+class neo4j(
   $neo_download_root = "http://dist.neo4j.org"
   $neo_edition = "community"
   $neo_version = "2.0.0"
   $neo_install_path = "/opt"
+)
+ {
+  require jdk
+
+  # GLOBAL PATH SETTING
+  Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 
   $neo_filename = "neo4j-${neo_edition}-${neo_version}-unix.tar.gz"
   $neo_package_url = "${neo_download_root}/${neo_filename}"
