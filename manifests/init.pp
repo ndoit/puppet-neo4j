@@ -6,9 +6,9 @@ class jdk{
 }
 
 class neo4j(
-  $neo_download_root = "http://dist.neo4j.org"
-  $neo_edition = "community"
-  $neo_version = "2.0.0"
+  $neo_download_root = "http://dist.neo4j.org",
+  $neo_edition = "community",
+  $neo_version = "2.0.0",
   $neo_install_path = "/opt"
 )
  {
