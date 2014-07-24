@@ -39,6 +39,11 @@ class neo4j(
         command => "mv ${neo_install_path}/*neo4j* ${neo_install_path}/neo4j",
         cwd => "${neo_install_path}"
   }
+  ->
+  exec { 'modify config to bind to 0.0.0.0':
+        command => "sed -i 's/#org.neo4j.server.webserver.address/org.neo4j.server.webserver.address/g' /usr/local/share/neo4j/conf/neo4j-server.properties",
+        cwd => "${neo_install_path}"
+  }
 
   package{ 'lsof':
     ensure => 'installed'
